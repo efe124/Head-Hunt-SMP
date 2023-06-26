@@ -43,7 +43,7 @@ public final class HeadHuntSMP extends JavaPlugin {
                 Logger.Error(e.getMessage());
             }
         }
-        //fdg
+
         if(GameConfig.get().getBoolean("unban-anchor.enabled")){
             try {
                 if(GameConfig.get().getBoolean("unban-anchor.use-default")) AnchorRecipeManager.loadDefaultRecipe(this);
