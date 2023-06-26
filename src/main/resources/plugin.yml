@@ -1,0 +1,6 @@
+name: HeadHuntSMP
+version: '${project.version}'
+main: me.efekos.headhuntsmp.HeadHuntSMP
+api-version: 1.19
+authors: [ efekos ]
+description: Basic HeadHuntSMP System
