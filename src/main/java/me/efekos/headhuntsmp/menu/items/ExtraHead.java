@@ -1,7 +1,8 @@
 package me.efekos.headhuntsmp.menu.items;
 
+import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.classes.PlayerData;
-import me.efekos.headhuntsmp.config.GameConfig;
+ 
 import me.efekos.headhuntsmp.files.PlayerDataManager;
 import me.efekos.simpler.annotations.RightClick;
 import me.efekos.simpler.translation.TranslateManager;
@@ -30,13 +31,13 @@ public class ExtraHead extends CustomItem {
         if(player.isSneaking()){
             data.setRemainingHeads(data.getRemainingHeads()+stack.getAmount());
 
-            player.sendMessage(TranslateManager.translateColors(GameConfig.get().getString("messages.new-heads").replace("%added%",stack.getAmount()+"").replace("%new%",data.getRemainingHeads()+"")));
+            player.sendMessage(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.new-heads","&aAdded &2%added% &anew heads! You have &2%new% &aheads now.").replace("%added%",stack.getAmount()+"").replace("%new%",data.getRemainingHeads()+"")));
 
             stack.setType(Material.AIR);
         } else {
             data.setRemainingHeads(data.getRemainingHeads()+1);
 
-            player.sendMessage(TranslateManager.translateColors(GameConfig.get().getString("messages.new-heads").replace("%added%","1").replace("%new%",data.getRemainingHeads()+"")));
+            player.sendMessage(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.new-heads","&aAdded &2%added% &anew heads! You have &2%new% &aheads now.").replace("%added%","1").replace("%new%",data.getRemainingHeads()+"")));
 
             stack.setAmount(stack.getAmount()-1);
         }

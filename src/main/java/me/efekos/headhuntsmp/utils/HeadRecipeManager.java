@@ -1,7 +1,7 @@
 package me.efekos.headhuntsmp.utils;
 
 import me.efekos.headhuntsmp.HeadHuntSMP;
-import me.efekos.headhuntsmp.config.GameConfig;
+ 
 import me.efekos.headhuntsmp.exceptions.InvalidRecipeException;
 import me.efekos.simpler.translation.TranslateManager;
 import org.bukkit.Material;
@@ -29,8 +29,8 @@ public class HeadRecipeManager {
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         PersistentDataContainer container = meta.getPersistentDataContainer();
 
-        meta.setDisplayName(TranslateManager.translateColors(GameConfig.get().getString("extra-head.name")));
-        meta.setLore(Collections.singletonList(TranslateManager.translateColors(GameConfig.get().getString("extra-head.description"))));
+        meta.setDisplayName(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("extra-head.name","&eExtra Head")));
+        meta.setLore(Collections.singletonList(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("extra-head.description","&6An extra head to use!"))));
 
         container.set(new NamespacedKey(HeadHuntSMP.getPlugin(),"extra-head"), PersistentDataType.STRING,"yes");
 
@@ -57,7 +57,7 @@ public class HeadRecipeManager {
 
         ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(plugin,"extra_head"),createHead());
 
-        List<String> shapeStrings = GameConfig.get().getStringList("extra-head.shape");
+        List<String> shapeStrings = HeadHuntSMP.gameConfig.getStringList("extra-head.shape");
 
         recipe.shape(shapeStrings.get(0),shapeStrings.get(1),shapeStrings.get(2));
 
@@ -74,7 +74,7 @@ public class HeadRecipeManager {
                     addedMaterials.add(character);
 
                     //make sure given key exists
-                    String materialString = GameConfig.get().getString("extra-head.materials." + character);
+                    String materialString = HeadHuntSMP.gameConfig.get().getString("extra-head.materials." + character);
                     if(materialString==null) throw new InvalidRecipeException("Key '"+character+"' is used in shape, but there is no material for this key.");
 
                     //make sure given key is a valid material

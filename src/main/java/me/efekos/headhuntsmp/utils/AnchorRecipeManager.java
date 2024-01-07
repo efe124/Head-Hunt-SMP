@@ -1,7 +1,7 @@
 package me.efekos.headhuntsmp.utils;
 
 import me.efekos.headhuntsmp.HeadHuntSMP;
-import me.efekos.headhuntsmp.config.GameConfig;
+ 
 import me.efekos.headhuntsmp.exceptions.InvalidRecipeException;
 import me.efekos.simpler.translation.TranslateManager;
 import org.bukkit.Material;

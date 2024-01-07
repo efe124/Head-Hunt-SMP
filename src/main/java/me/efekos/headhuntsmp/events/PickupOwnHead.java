@@ -2,7 +2,7 @@ package me.efekos.headhuntsmp.events;
 
 import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.classes.PlayerData;
-import me.efekos.headhuntsmp.config.GameConfig;
+ 
 import me.efekos.headhuntsmp.files.PlayerDataManager;
 import me.efekos.headhuntsmp.menu.items.PlayerHead;
 import me.efekos.simpler.translation.TranslateManager;

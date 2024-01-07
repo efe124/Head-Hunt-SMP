@@ -3,7 +3,7 @@ package me.efekos.headhuntsmp.files;
 import com.google.gson.Gson;
 import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.classes.PlayerData;
-import me.efekos.headhuntsmp.config.GameConfig;
+ 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -43,7 +43,7 @@ public class PlayerDataManager {
             Player p = Bukkit.getPlayer(id);
 
             assert p != null;
-            int defheads = GameConfig.get().getInt("default-heads");
+            int defheads = HeadHuntSMP.gameConfig.getInt("default-heads",9);
             create(new PlayerData(defheads!=0?defheads:9,id,p.getName()));
         }
         return get(id);

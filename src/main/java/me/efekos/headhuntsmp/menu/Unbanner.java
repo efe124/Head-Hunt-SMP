@@ -1,7 +1,8 @@
 package me.efekos.headhuntsmp.menu;
 
+import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.classes.PlayerData;
-import me.efekos.headhuntsmp.config.GameConfig;
+ 
 import me.efekos.headhuntsmp.files.PlayerDataManager;
 import me.efekos.headhuntsmp.utils.AnchorRecipeManager;
 import me.efekos.simpler.menu.Menu;
@@ -31,7 +32,7 @@ public class Unbanner extends Menu {
 
     @Override
     public String getTitle() {
-        return GameConfig.get().getString("messages.unban.title");
+        return HeadHuntSMP.gameConfig.getString("messages.unban.title","Unbanner");
     }
 
     private boolean gonnaGive = true;
@@ -71,7 +72,7 @@ public class Unbanner extends Menu {
 
     @Override
     public void fill() {
-        inventory.setItem(49,createItem(Material.BARRIER, TranslateManager.translateColors(GameConfig.get().getString("messages.unban.close"))));
+        inventory.setItem(49,createItem(Material.BARRIER, TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.unban.close","&cClose"))));
 
         for (BanEntry entry : Bukkit.getBanList(BanList.Type.NAME).getBanEntries()) {
             PlayerData data = PlayerDataManager.get(entry.getTarget());
