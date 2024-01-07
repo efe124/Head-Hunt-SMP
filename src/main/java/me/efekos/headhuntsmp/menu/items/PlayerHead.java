@@ -36,25 +36,6 @@ public class PlayerHead extends CustomItem {
     }
 
     @Override
-    public void onLeftClick(PlayerInteractEvent event) {
-
-    }
-
-    @Override
-    public void onRightClick(PlayerInteractEvent event) {
-    }
-
-    @Override
-    public void onDrop(PlayerDropItemEvent event) {
-
-    }
-
-    @Override
-    public void onPickup(EntityPickupItemEvent event) {
-
-    }
-
-    @Override
     public @NotNull String getId() {
         return "head";
     }

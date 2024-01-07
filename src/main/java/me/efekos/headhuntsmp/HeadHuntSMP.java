@@ -1,6 +1,5 @@
 package me.efekos.headhuntsmp;
 
-import me.efekos.headhuntsmp.config.GameConfig;
 import me.efekos.headhuntsmp.events.PickupOwnHead;
 import me.efekos.headhuntsmp.events.Place;
 import me.efekos.headhuntsmp.events.PlayerCraftHead;
@@ -10,6 +9,7 @@ import me.efekos.headhuntsmp.utils.AnchorRecipeManager;
 import me.efekos.headhuntsmp.utils.Logger;
 import me.efekos.headhuntsmp.utils.HeadRecipeManager;
 import me.efekos.simpler.Metrics;
+import me.efekos.simpler.config.YamlConfig;
 import me.efekos.simpler.items.ItemManager;
 import me.efekos.simpler.menu.MenuManager;
 import org.bukkit.Bukkit;
@@ -18,6 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class HeadHuntSMP extends JavaPlugin {
 
     private static HeadHuntSMP plugin;
+    public static YamlConfig gameConfig;
 
     public static HeadHuntSMP getPlugin(){
         return plugin;
@@ -31,12 +32,13 @@ public final class HeadHuntSMP extends JavaPlugin {
         Metrics metrics = new Metrics(this,18888);
 
         Logger.Log("Loading config");
-        GameConfig.setup();
+        gameConfig = new YamlConfig("config.yml",this);
+        gameConfig.setup();
 
         Logger.Log("Loading recipes");
-        if(GameConfig.get().getBoolean("extra-head.enabled")){
+        if(gameConfig.getBoolean("extra-head.enabled",true)){
             try {
-                if(GameConfig.get().getBoolean("extra-head.use-default")) HeadRecipeManager.loadDefaultRecipe(this);
+                if(gameConfig.getBoolean("extra-head.use-default",true)) HeadRecipeManager.loadDefaultRecipe(this);
                 else HeadRecipeManager.loadConfigRecipe(this);
 
                 Bukkit.addRecipe(HeadRecipeManager.getLastLoadedRecipe());
@@ -47,9 +49,9 @@ public final class HeadHuntSMP extends JavaPlugin {
             }
         }
 
-        if(GameConfig.get().getBoolean("unban-anchor.enabled")){
+        if(gameConfig.getBoolean("unban-anchor.enabled",true)){
             try {
-                if(GameConfig.get().getBoolean("unban-anchor.use-default")) AnchorRecipeManager.loadDefaultRecipe(this);
+                if(gameConfig.getBoolean("unban-anchor.use-default",true)) AnchorRecipeManager.loadDefaultRecipe(this);
                 else AnchorRecipeManager.loadConfigRecipe(this);
 
                 Bukkit.addRecipe(AnchorRecipeManager.getLastLoadedRecipe());

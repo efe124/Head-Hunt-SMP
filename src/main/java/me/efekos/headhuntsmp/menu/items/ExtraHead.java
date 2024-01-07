@@ -3,7 +3,8 @@ package me.efekos.headhuntsmp.menu.items;
 import me.efekos.headhuntsmp.classes.PlayerData;
 import me.efekos.headhuntsmp.config.GameConfig;
 import me.efekos.headhuntsmp.files.PlayerDataManager;
-import me.efekos.simpler.commands.translation.TranslateManager;
+import me.efekos.simpler.annotations.RightClick;
+import me.efekos.simpler.translation.TranslateManager;
 import me.efekos.simpler.items.CustomItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,13 +20,10 @@ import java.util.Objects;
 import java.util.concurrent.TransferQueue;
 
 public class ExtraHead extends CustomItem {
-    @Override
-    public void onLeftClick(PlayerInteractEvent event) {
 
-    }
 
-    @Override
-    public void onRightClick(PlayerInteractEvent event) {
+    @RightClick
+    public void onRightClick(CustomItem item,PlayerInteractEvent event) {
         ItemStack stack = event.getItem();
         Player player = event.getPlayer();
         PlayerData data = PlayerDataManager.fetch(player);
@@ -43,16 +41,6 @@ public class ExtraHead extends CustomItem {
             stack.setAmount(stack.getAmount()-1);
         }
         PlayerDataManager.update(data.getUuid(),data);
-    }
-
-    @Override
-    public void onDrop(PlayerDropItemEvent event) {
-
-    }
-
-    @Override
-    public void onPickup(EntityPickupItemEvent event) {
-
     }
 
     @Override
@@ -74,4 +62,6 @@ public class ExtraHead extends CustomItem {
     public @NotNull Material getMaterial() {
         return Material.PLAYER_HEAD;
     }
+
+
 }

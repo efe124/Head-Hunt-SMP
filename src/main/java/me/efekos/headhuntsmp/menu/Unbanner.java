@@ -4,16 +4,15 @@ import me.efekos.headhuntsmp.classes.PlayerData;
 import me.efekos.headhuntsmp.config.GameConfig;
 import me.efekos.headhuntsmp.files.PlayerDataManager;
 import me.efekos.headhuntsmp.utils.AnchorRecipeManager;
-import me.efekos.simpler.commands.translation.TranslateManager;
 import me.efekos.simpler.menu.Menu;
 import me.efekos.simpler.menu.MenuData;
+import me.efekos.simpler.translation.TranslateManager;
 import org.bukkit.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.scheduler.BukkitTask;
 
 public class Unbanner extends Menu {
     @Override

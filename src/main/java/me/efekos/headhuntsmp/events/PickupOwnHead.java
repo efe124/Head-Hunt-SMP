@@ -5,7 +5,7 @@ import me.efekos.headhuntsmp.classes.PlayerData;
 import me.efekos.headhuntsmp.config.GameConfig;
 import me.efekos.headhuntsmp.files.PlayerDataManager;
 import me.efekos.headhuntsmp.menu.items.PlayerHead;
-import me.efekos.simpler.commands.translation.TranslateManager;
+import me.efekos.simpler.translation.TranslateManager;
 import me.efekos.simpler.items.ItemManager;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;

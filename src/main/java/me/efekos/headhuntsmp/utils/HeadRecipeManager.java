@@ -3,7 +3,7 @@ package me.efekos.headhuntsmp.utils;
 import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.config.GameConfig;
 import me.efekos.headhuntsmp.exceptions.InvalidRecipeException;
-import me.efekos.simpler.commands.translation.TranslateManager;
+import me.efekos.simpler.translation.TranslateManager;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
@@ -29,11 +29,9 @@ public class HeadRecipeManager {
         SkullMeta meta = (SkullMeta) skull.getItemMeta();
         PersistentDataContainer container = meta.getPersistentDataContainer();
 
-        assert meta != null;
         meta.setDisplayName(TranslateManager.translateColors(GameConfig.get().getString("extra-head.name")));
         meta.setLore(Collections.singletonList(TranslateManager.translateColors(GameConfig.get().getString("extra-head.description"))));
 
-        assert container != null;
         container.set(new NamespacedKey(HeadHuntSMP.getPlugin(),"extra-head"), PersistentDataType.STRING,"yes");
 
         skull.setItemMeta(meta);
@@ -41,7 +39,7 @@ public class HeadRecipeManager {
         return skull;
     }
 
-    public static ShapedRecipe loadDefaultRecipe(JavaPlugin plugin){
+    public static void loadDefaultRecipe(JavaPlugin plugin){
         ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(plugin,"revive_head"),createHead());
 
         recipe.shape("DSD","CNR","DZD");
@@ -53,10 +51,9 @@ public class HeadRecipeManager {
         recipe.setIngredient('Z',Material.ZOMBIE_HEAD);
 
         lastLoadedRecipe = recipe;
-        return recipe;
     }
 
-    public static ShapedRecipe loadConfigRecipe(JavaPlugin plugin) throws InvalidRecipeException {
+    public static void loadConfigRecipe(JavaPlugin plugin) throws InvalidRecipeException {
 
         ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(plugin,"extra_head"),createHead());
 
@@ -91,6 +88,5 @@ public class HeadRecipeManager {
         }
 
         lastLoadedRecipe = recipe;
-        return recipe;
     }
 }

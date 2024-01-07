@@ -6,10 +6,6 @@ In this SMP, everyone has 10 heads. Lose them all to a player, and you are gone!
 
 ## config.yml File
 ````yaml
-##### NOTES #####
-#  The term 'Enable the option' indicates setting the option's value to 'true'.
-#  The term 'Disable the option' indicates setting the option's value to 'false'.
-
 # Default head count that every player will get on first join and unbans.
 default-heads: 10
 
