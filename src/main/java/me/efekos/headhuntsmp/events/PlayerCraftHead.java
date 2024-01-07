@@ -2,9 +2,8 @@ package me.efekos.headhuntsmp.events;
 
 import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.classes.PlayerData;
- 
-import me.efekos.headhuntsmp.files.PlayerDataManager;
-import me.efekos.simpler.commands.translation.TranslateManager;
+
+import me.efekos.simpler.translation.TranslateManager;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,21 +20,21 @@ public class PlayerCraftHead implements Listener {
 
                 ItemStack stack = e.getItem();
                 Player player = e.getPlayer();
-                PlayerData data = PlayerDataManager.fetch(player);
+                PlayerData data = HeadHuntSMP.PLAYER_DATA.get(player.getUniqueId());
                 if(player.isSneaking()){
                     data.setRemainingHeads(data.getRemainingHeads()+stack.getAmount());
 
-                    player.sendMessage(TranslateManager.translateColors(GameConfig.get().getString("messages.new-heads").replace("%added%",stack.getAmount()+"").replace("%new%",data.getRemainingHeads()+"")));
+                    player.sendMessage(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.new-heads","&aAdded &2%added% &anew heads! You have &2%new% &aheads now.").replace("%added%",stack.getAmount()+"").replace("%new%",data.getRemainingHeads()+"")));
 
                     stack.setAmount(stack.getAmount()-stack.getAmount());
                 } else {
                     data.setRemainingHeads(data.getRemainingHeads()+1);
 
-                    player.sendMessage(TranslateManager.translateColors(GameConfig.get().getString("messages.new-heads").replace("%added%","1").replace("%new%",data.getRemainingHeads()+"")));
+                    player.sendMessage(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.new-heads","&aAdded &2%added% &anew heads! You have &2%new% &aheads now.").replace("%added%","1").replace("%new%",data.getRemainingHeads()+"")));
 
                     stack.setAmount(stack.getAmount()-1);
                 }
-                PlayerDataManager.update(data.getUuid(),data);
+                HeadHuntSMP.PLAYER_DATA.update(data.getUniqueId(),data);
             }
         } catch (Exception ignored){}
     }

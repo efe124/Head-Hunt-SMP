@@ -1,8 +1,10 @@
 package me.efekos.headhuntsmp.classes;
 
+import me.efekos.simpler.config.Storable;
+
 import java.util.UUID;
 
-public class PlayerData {
+public class PlayerData implements Storable {
     Integer remainingHeads;
     UUID uuid;
     String name;
@@ -21,11 +23,12 @@ public class PlayerData {
         this.remainingHeads = remainingHeads;
     }
 
-    public UUID getUuid() {
+    @Override
+    public UUID getUniqueId() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public void setUniqueId(UUID uuid) {
         this.uuid = uuid;
     }
 

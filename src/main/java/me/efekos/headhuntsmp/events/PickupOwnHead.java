@@ -2,8 +2,7 @@ package me.efekos.headhuntsmp.events;
 
 import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.classes.PlayerData;
- 
-import me.efekos.headhuntsmp.files.PlayerDataManager;
+
 import me.efekos.headhuntsmp.menu.items.PlayerHead;
 import me.efekos.simpler.translation.TranslateManager;
 import me.efekos.simpler.items.ItemManager;
@@ -42,11 +41,11 @@ public class PickupOwnHead implements Listener {
 
         if(item.getOwner() != p.getUniqueId()) return; // head is his
 
-        PlayerData data = PlayerDataManager.fetch(p.getUniqueId());
+        PlayerData data = HeadHuntSMP.PLAYER_DATA.get(p.getUniqueId());
 
         data.setRemainingHeads(data.getRemainingHeads()+stack.getAmount());
 
-        PlayerDataManager.update(data.getUuid(),data);
+        HeadHuntSMP.PLAYER_DATA.update(data.getUniqueId(),data);
 
         p.sendMessage(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.new-heads","&aAdded &2%added% &anew heads! You have &2%new% &aheads now.").replace("%added%", stack.getAmount() + "").replace("%new%", data.getRemainingHeads() + "")));
 

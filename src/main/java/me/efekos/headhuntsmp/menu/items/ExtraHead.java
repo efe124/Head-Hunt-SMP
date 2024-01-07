@@ -2,15 +2,12 @@ package me.efekos.headhuntsmp.menu.items;
 
 import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.classes.PlayerData;
- 
-import me.efekos.headhuntsmp.files.PlayerDataManager;
+
 import me.efekos.simpler.annotations.RightClick;
 import me.efekos.simpler.translation.TranslateManager;
 import me.efekos.simpler.items.CustomItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityPickupItemEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -18,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.concurrent.TransferQueue;
 
 public class ExtraHead extends CustomItem {
 
@@ -41,7 +37,7 @@ public class ExtraHead extends CustomItem {
 
             stack.setAmount(stack.getAmount()-1);
         }
-        PlayerDataManager.update(data.getUuid(),data);
+        PlayerDataManager.update(data.getUniqueId(),data);
     }
 
     @Override

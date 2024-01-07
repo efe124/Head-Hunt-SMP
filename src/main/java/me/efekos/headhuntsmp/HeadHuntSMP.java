@@ -1,14 +1,15 @@
 package me.efekos.headhuntsmp;
 
+import me.efekos.headhuntsmp.classes.PlayerData;
 import me.efekos.headhuntsmp.events.PickupOwnHead;
 import me.efekos.headhuntsmp.events.Place;
 import me.efekos.headhuntsmp.events.PlayerCraftHead;
 import me.efekos.headhuntsmp.events.PlayerKilled;
-import me.efekos.headhuntsmp.files.PlayerDataManager;
 import me.efekos.headhuntsmp.utils.AnchorRecipeManager;
 import me.efekos.headhuntsmp.utils.Logger;
 import me.efekos.headhuntsmp.utils.HeadRecipeManager;
 import me.efekos.simpler.Metrics;
+import me.efekos.simpler.config.ListDataManager;
 import me.efekos.simpler.config.YamlConfig;
 import me.efekos.simpler.items.ItemManager;
 import me.efekos.simpler.menu.MenuManager;
@@ -19,6 +20,7 @@ public final class HeadHuntSMP extends JavaPlugin {
 
     private static HeadHuntSMP plugin;
     public static YamlConfig gameConfig;
+    public static ListDataManager<PlayerData> PLAYER_DATA;
 
     public static HeadHuntSMP getPlugin(){
         return plugin;
