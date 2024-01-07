@@ -1,10 +1,7 @@
 package me.efekos.headhuntsmp;
 
 import me.efekos.headhuntsmp.classes.PlayerData;
-import me.efekos.headhuntsmp.events.PickupOwnHead;
-import me.efekos.headhuntsmp.events.Place;
-import me.efekos.headhuntsmp.events.PlayerCraftHead;
-import me.efekos.headhuntsmp.events.PlayerKilled;
+import me.efekos.headhuntsmp.events.*;
 import me.efekos.headhuntsmp.utils.AnchorRecipeManager;
 import me.efekos.headhuntsmp.utils.Logger;
 import me.efekos.headhuntsmp.utils.HeadRecipeManager;
@@ -68,6 +65,7 @@ public final class HeadHuntSMP extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerKilled(),this);
         getServer().getPluginManager().registerEvents(new PlayerCraftHead(),this);
         getServer().getPluginManager().registerEvents(new Place(),this);
+        getServer().getPluginManager().registerEvents(new PlayerJoined(),this);
 
         Logger.Log("Loading data");
         PLAYER_DATA = new ListDataManager<>("\\data\\PlayerData.json",this);
