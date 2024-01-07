@@ -23,7 +23,7 @@ public class ExtraHead extends CustomItem {
     public void onRightClick(CustomItem item,PlayerInteractEvent event) {
         ItemStack stack = event.getItem();
         Player player = event.getPlayer();
-        PlayerData data = PlayerDataManager.fetch(player);
+        PlayerData data = HeadHuntSMP.PLAYER_DATA.get(player.getUniqueId());
         if(player.isSneaking()){
             data.setRemainingHeads(data.getRemainingHeads()+stack.getAmount());
 
@@ -37,7 +37,7 @@ public class ExtraHead extends CustomItem {
 
             stack.setAmount(stack.getAmount()-1);
         }
-        PlayerDataManager.update(data.getUniqueId(),data);
+        HeadHuntSMP.PLAYER_DATA.update(data.getUniqueId(),data);
     }
 
     @Override
