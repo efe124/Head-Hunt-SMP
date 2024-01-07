@@ -1,10 +1,11 @@
 package me.efekos.headhuntsmp.events;
 
+import me.efekos.headhuntsmp.HeadHuntSMP;
 import me.efekos.headhuntsmp.classes.PlayerData;
  
 import me.efekos.headhuntsmp.files.PlayerDataManager;
 import me.efekos.headhuntsmp.menu.items.PlayerHead;
-import me.efekos.simpler.commands.translation.TranslateManager;
+import me.efekos.simpler.translation.TranslateManager;
 import me.efekos.simpler.items.ItemManager;
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
@@ -39,9 +40,9 @@ public class PlayerKilled implements Listener {
 
             e.getDrops().add(stack);
 
-            Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(p.getName(), TranslateManager.translateColors(GameConfig.get().getString("messages.no-heads")), null, "HeadHuntSMP");
-            p.kickPlayer(TranslateManager.translateColors(GameConfig.get().getString("messages.no-heads")));
+            Bukkit.getServer().getBanList(BanList.Type.NAME).addBan(p.getName(), TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.no-heads","&cYou have no heads left.")), null, "HeadHuntSMP");
+            p.kickPlayer(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.no-heads","&cYou have no heads left.")));
         } else
-        p.sendMessage(TranslateManager.translateColors(GameConfig.get().getString("messages.left-heads").replace("%count%",data.getRemainingHeads()+"")));
+        p.sendMessage(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.left-heads","&aYou have &2%count% &aheads left.").replace("%count%",data.getRemainingHeads()+"")));
     }
 }

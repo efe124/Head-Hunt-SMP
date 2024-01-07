@@ -32,8 +32,8 @@ public class AnchorRecipeManager {
         PersistentDataContainer container = meta.getPersistentDataContainer();
 
         assert meta != null;
-        meta.setDisplayName(TranslateManager.translateColors(GameConfig.get().getString("unban-anchor.name")));
-        meta.setLore(Collections.singletonList(TranslateManager.translateColors(GameConfig.get().getString("unban-anchor.description"))));
+        meta.setDisplayName(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("unban-anchor.name","&dUnban Anchor")));
+        meta.setLore(Collections.singletonList(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("unban-anchor.description","&5Place this to unban a player!"))));
 
         assert container != null;
         container.set(new NamespacedKey(HeadHuntSMP.getPlugin(),"unban_anchor"), PersistentDataType.STRING,"yes");
@@ -59,7 +59,7 @@ public class AnchorRecipeManager {
 
         ShapedRecipe recipe = new ShapedRecipe(namespace, createAnchor());
 
-        List<String> shapeStrings = GameConfig.get().getStringList("unban-anchor.shape");
+        List<String> shapeStrings = HeadHuntSMP.gameConfig.getStringList("unban-anchor.shape");
 
         recipe.shape(shapeStrings.get(0),shapeStrings.get(1),shapeStrings.get(2));
 
@@ -76,7 +76,7 @@ public class AnchorRecipeManager {
                     addedMaterials.add(character);
 
                     //make sure given key exists
-                    String materialString = GameConfig.get().getString("unban-anchor.materials." + character);
+                    String materialString = HeadHuntSMP.gameConfig.get().getString("unban-anchor.materials." + character);
                     if(materialString==null) throw new InvalidRecipeException("Key '"+character+"' is used in shape, but there is no material for this key.");
 
                     //make sure given key is a valid material

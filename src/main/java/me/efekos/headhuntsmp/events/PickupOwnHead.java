@@ -48,7 +48,7 @@ public class PickupOwnHead implements Listener {
 
         PlayerDataManager.update(data.getUuid(),data);
 
-        p.sendMessage(TranslateManager.translateColors(GameConfig.get().getString("messages.new-heads").replace("%added%", stack.getAmount() + "").replace("%new%", data.getRemainingHeads() + "")));
+        p.sendMessage(TranslateManager.translateColors(HeadHuntSMP.gameConfig.getString("messages.new-heads","&aAdded &2%added% &anew heads! You have &2%new% &aheads now.").replace("%added%", stack.getAmount() + "").replace("%new%", data.getRemainingHeads() + "")));
 
         new BukkitRunnable(){
             @Override

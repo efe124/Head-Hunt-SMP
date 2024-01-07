@@ -53,8 +53,8 @@ public class ExtraHead extends CustomItem {
     public @NotNull ItemMeta getDefaultMeta() {
         ItemMeta meta = new ItemStack(getMaterial()).getItemMeta();
 
-        meta.setDisplayName(TranslateManager.translateColors(Objects.requireNonNull(GameConfig.get().getString("extra-head.name"))));
-        meta.setLore(Arrays.asList(TranslateManager.translateColors(Objects.requireNonNull(GameConfig.get().getString("extra-head.description")))));
+        meta.setDisplayName(TranslateManager.translateColors(Objects.requireNonNull(HeadHuntSMP.gameConfig.getString("extra-head.name","&eExtra Head"))));
+        meta.setLore(Arrays.asList(TranslateManager.translateColors(Objects.requireNonNull(HeadHuntSMP.gameConfig.getString("extra-head.description","&6Right-Click to gain an extra head!")))));
 
         return meta;
     }
