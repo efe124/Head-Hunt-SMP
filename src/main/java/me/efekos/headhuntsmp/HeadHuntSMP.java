@@ -9,6 +9,7 @@ import me.efekos.headhuntsmp.files.PlayerDataManager;
 import me.efekos.headhuntsmp.utils.AnchorRecipeManager;
 import me.efekos.headhuntsmp.utils.Logger;
 import me.efekos.headhuntsmp.utils.HeadRecipeManager;
+import me.efekos.simpler.Metrics;
 import me.efekos.simpler.items.ItemManager;
 import me.efekos.simpler.menu.MenuManager;
 import org.bukkit.Bukkit;
@@ -26,6 +27,8 @@ public final class HeadHuntSMP extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         Logger.Info("Plugin starting");
+
+        Metrics metrics = new Metrics(this,18888);
 
         Logger.Log("Loading config");
         GameConfig.setup();
