@@ -70,7 +70,8 @@ public final class HeadHuntSMP extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Place(),this);
 
         Logger.Log("Loading data");
-        PlayerDataManager.load();
+        PLAYER_DATA = new ListDataManager<>("\\data\\PlayerData.json",this);
+        PLAYER_DATA.load(PlayerData[].class);
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
@@ -85,7 +86,7 @@ public final class HeadHuntSMP extends JavaPlugin {
         Logger.Info("Plugin Stopping");
 
         Logger.Log("Saving data");
-        PlayerDataManager.save();
+        PLAYER_DATA.save();
 
         Logger.Success("Plugin Stopped!");
     }
