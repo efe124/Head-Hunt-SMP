@@ -24,7 +24,7 @@ public class Place implements Listener {
 
     @EventHandler
     public void onPlaceAnchor(BlockPlaceEvent e){
-        Logger.Info("a");
+        Logger.info("a");
         ItemStack stack = e.getItemInHand();
 
         if(stack.getItemMeta().getPersistentDataContainer().has(AnchorRecipeManager.namespace,PersistentDataType.STRING)){

@@ -26,15 +26,15 @@ public final class HeadHuntSMP extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-        Logger.Info("Plugin starting");
+        Logger.info("Plugin starting");
 
         Metrics metrics = new Metrics(this,18888);
 
-        Logger.Log("Loading config");
+        Logger.log("Loading config");
         gameConfig = new YamlConfig("config.yml",this);
         gameConfig.setup();
 
-        Logger.Log("Loading recipes");
+        Logger.log("Loading recipes");
         if(gameConfig.getBoolean("extra-head.enabled",true)){
             try {
                 if(gameConfig.getBoolean("extra-head.use-default",true)) HeadRecipeManager.loadDefaultRecipe(this);
@@ -43,8 +43,8 @@ public final class HeadHuntSMP extends JavaPlugin {
                 Bukkit.addRecipe(HeadRecipeManager.getLastLoadedRecipe());
                 Bukkit.addRecipe(AnchorRecipeManager.getLastLoadedRecipe());
             } catch (Exception e){
-                Logger.Error("There was an error loading the recipes:");
-                Logger.Error(e.getMessage());
+                Logger.error("There was an error loading the recipes:");
+                Logger.error(e.getMessage());
             }
         }
 
@@ -55,19 +55,19 @@ public final class HeadHuntSMP extends JavaPlugin {
 
                 Bukkit.addRecipe(AnchorRecipeManager.getLastLoadedRecipe());
             } catch (Exception e){
-                Logger.Error("There was an error loading the recipes:");
-                Logger.Error(e.getMessage());
+                Logger.error("There was an error loading the recipes:");
+                Logger.error(e.getMessage());
             }
         }
 
-        Logger.Log("Loading events");
+        Logger.log("Loading events");
         getServer().getPluginManager().registerEvents(new PickupOwnHead(),this);
         getServer().getPluginManager().registerEvents(new PlayerKilled(),this);
         getServer().getPluginManager().registerEvents(new PlayerCraftHead(),this);
         getServer().getPluginManager().registerEvents(new Place(),this);
         getServer().getPluginManager().registerEvents(new PlayerJoined(),this);
 
-        Logger.Log("Loading data");
+        Logger.log("Loading data");
         PLAYER_DATA = new ListDataManager<>("\\data\\PlayerData.json",this);
         PLAYER_DATA.load(PlayerData[].class);
 
@@ -76,16 +76,16 @@ public final class HeadHuntSMP extends JavaPlugin {
         ItemManager.setPlugin(this);
         MenuManager.setPlugin(this);
 
-        Logger.Success("Plugin Started!");
+        Logger.success("Plugin Started!");
     }
 
     @Override
     public void onDisable() {
-        Logger.Info("Plugin Stopping");
+        Logger.info("Plugin Stopping");
 
-        Logger.Log("Saving data");
+        Logger.log("Saving data");
         PLAYER_DATA.save();
 
-        Logger.Success("Plugin Stopped!");
+        Logger.success("Plugin Stopped!");
     }
 }
