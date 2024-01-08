@@ -9,14 +9,14 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoined implements Listener {
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
+    public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
         PlayerData data = HeadHuntSMP.PLAYER_DATA.get(player.getUniqueId());
-        if(data==null)HeadHuntSMP.PLAYER_DATA.add(new PlayerData(10,player.getUniqueId(),player.getName()));
+        if (data == null) HeadHuntSMP.PLAYER_DATA.add(new PlayerData(10, player.getUniqueId(), player.getName()));
         else {
             data.setName(player.getName());
-            HeadHuntSMP.PLAYER_DATA.update(data.getUniqueId(),data);
+            HeadHuntSMP.PLAYER_DATA.update(data.getUniqueId(), data);
         }
     }
 }

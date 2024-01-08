@@ -8,9 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashMap;
 
 public class HashMapUtils {
-    public static void storeToPersistentDataContainer(HashMap<String,String> map, PersistentDataContainer container, JavaPlugin plugin){
+    public static void storeToPersistentDataContainer(HashMap<String, String> map, PersistentDataContainer container, JavaPlugin plugin) {
         map.keySet().forEach(s -> {
-            container.set(new NamespacedKey(plugin,s), PersistentDataType.STRING,map.get(s));
+            container.set(new NamespacedKey(plugin, s), PersistentDataType.STRING, map.get(s));
         });
     }
 }

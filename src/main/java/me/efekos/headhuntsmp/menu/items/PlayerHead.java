@@ -19,7 +19,7 @@ public class PlayerHead extends CustomItem {
 
     private final UUID owner;
 
-    public PlayerHead(Player owner){
+    public PlayerHead(Player owner) {
         this(owner.getUniqueId());
     }
 
@@ -41,8 +41,8 @@ public class PlayerHead extends CustomItem {
         OfflinePlayer p = Bukkit.getOfflinePlayer(owner);
 
         SkullMeta meta = (SkullMeta) new ItemStack(getMaterial()).getItemMeta();
-        meta.setDisplayName(ColorTranslator.translateColorCodes(HeadHuntSMP.gameConfig.getString("messages.head.name","&eHead")));
-        meta.setLore(Arrays.asList(ColorTranslator.translateColorCodes(HeadHuntSMP.gameConfig.getString("messages.head.own","&6Belongs to %player%").replace("%player%", p.getName()))));
+        meta.setDisplayName(ColorTranslator.translateColorCodes(HeadHuntSMP.gameConfig.getString("messages.head.name", "&eHead")));
+        meta.setLore(Arrays.asList(ColorTranslator.translateColorCodes(HeadHuntSMP.gameConfig.getString("messages.head.own", "&6Belongs to %player%").replace("%player%", p.getName()))));
         meta.setOwningPlayer(p);
         return meta;
     }

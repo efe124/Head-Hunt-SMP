@@ -1,6 +1,6 @@
 package me.efekos.headhuntsmp.exceptions;
 
-public class InvalidRecipeException extends Exception{
+public class InvalidRecipeException extends Exception {
     public InvalidRecipeException() {
     }
 

@@ -16,21 +16,22 @@ import java.util.Objects;
 
 public class Place implements Listener {
     @EventHandler
-    public void onPlaceHead(BlockPlaceEvent e){
+    public void onPlaceHead(BlockPlaceEvent e) {
         ItemStack stack = e.getItemInHand();
 
-        if(Objects.equals(stack.getItemMeta().getPersistentDataContainer().get(ItemManager.itemTypeKey, PersistentDataType.STRING), "head")) e.setCancelled(true);
+        if (Objects.equals(stack.getItemMeta().getPersistentDataContainer().get(ItemManager.itemTypeKey, PersistentDataType.STRING), "head"))
+            e.setCancelled(true);
     }
 
     @EventHandler
-    public void onPlaceAnchor(BlockPlaceEvent e){
+    public void onPlaceAnchor(BlockPlaceEvent e) {
         Logger.info("a");
         ItemStack stack = e.getItemInHand();
 
-        if(stack.getItemMeta().getPersistentDataContainer().has(AnchorRecipeManager.namespace,PersistentDataType.STRING)){
+        if (stack.getItemMeta().getPersistentDataContainer().has(AnchorRecipeManager.namespace, PersistentDataType.STRING)) {
             MenuData data = MenuManager.getMenuData(e.getPlayer());
 
-            data.set("blockLocation",e.getBlock().getLocation());
+            data.set("blockLocation", e.getBlock().getLocation());
 
             MenuManager.Open(e.getPlayer(), Unbanner.class);
         }
