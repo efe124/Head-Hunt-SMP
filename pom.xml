@@ -89,11 +89,6 @@
             <version>2.10.1</version>
         </dependency>
         <dependency>
-            <groupId>dev.efekos</groupId>
-            <artifactId>Arn</artifactId>
-            <version>0.3</version>
-        </dependency>
-        <dependency>
             <groupId>me.efekos</groupId>
             <artifactId>Simpler</artifactId>
             <version>1.7.1</version>
